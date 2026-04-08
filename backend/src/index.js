@@ -52,7 +52,7 @@ async function start() {
 
 const cors = require("cors");
 app.use(cors({
-  origin: "https://ccs-profiling-system-woad.vercel.app/",
+  origin: "https://testing-lang-ten.vercel.app/",
   credentials: true
 }));
 
