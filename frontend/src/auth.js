@@ -1,7 +1,8 @@
+const API_URL= "https://testing-lang-lgsz.onrender.com"
 export const auth = {
   async login(username, password) {
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
