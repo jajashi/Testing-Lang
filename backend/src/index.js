@@ -17,7 +17,11 @@ if (!PORT) {
 }
 
 app.use(cors({
-  origin: "https://testing-lang-ten.vercel.app/",
+  origin: [
+    "https://testing-lang-ten.vercel.app/",
+    "https://testing-lang-98vmrs0p5-jarsha-acus-projects.vercel.app", 
+    "http://localhost:5173" // for local dev
+  ],
   credentials: true
 }));
 
