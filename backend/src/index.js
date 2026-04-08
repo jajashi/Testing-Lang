@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require("cors");
 const { connectDB } = require('./config/database');
 const studentRoutes = require('./routes/studentRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
@@ -14,6 +15,11 @@ if (!PORT) {
   console.error('PORT is not defined. Set it in your .env file (see .env.example).');
   process.exit(1);
 }
+
+app.use(cors({
+  origin: "https://testing-lang-ten.vercel.app/",
+  credentials: true
+}));
 
 app.use(express.json({ limit: '8mb' }));
 
@@ -49,11 +55,5 @@ async function start() {
     process.exit(1);
   }
 }
-
-const cors = require("cors");
-app.use(cors({
-  origin: "https://testing-lang-ten.vercel.app/",
-  credentials: true
-}));
 
 start();
