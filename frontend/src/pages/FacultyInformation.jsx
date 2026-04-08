@@ -8,6 +8,7 @@ import '../styles/StudentInformation.css';
 
 const FacultyInformation = () => {
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
   const { employeeId: selectedEmployeeId } = useParams();
   const { isAdmin } = useAuth();
   const [faculty, setFaculty] = useState([]);
@@ -22,7 +23,7 @@ const FacultyInformation = () => {
 
   const loadFaculty = async () => {
     try {
-      const res = await fetch('/api/faculty');
+      const res = await fetch(`${API_URL}/api/faculty/${employeeId}`);
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -97,7 +98,7 @@ const FacultyInformation = () => {
 
   const openEditForm = async (employeeId) => {
     try {
-      const res = await fetch(`/api/faculty/${employeeId}`);
+      const res = await fetch(`${API_URL}/api/faculty`);
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       const data = await res.json();
       setFormMode('edit');
