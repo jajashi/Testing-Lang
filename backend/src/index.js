@@ -11,27 +11,24 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-if (!PORT) {
-  console.error('PORT is not defined. Set it in your .env file (see .env.example).');
-  process.exit(1);
-}
-
 app.use(cors({
   origin: [
-    "https://testing-lang-ten.vercel.app/",
-    "https://testing-lang-98vmrs0p5-jarsha-acus-projects.vercel.app", 
-    "http://localhost:5173" // for local dev
+    "https://testing-lang-ten.vercel.app",
+    "https://testing-lang-98vmrs0p5-jarsha-acus-projects.vercel.app",
+    "http://localhost:5173"
   ],
   credentials: true
 }));
 
 app.use(express.json({ limit: '8mb' }));
 
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/specializations', specializationRoutes);
 
+// Error handler
 app.use((err, _req, res, _next) => {
   const status = err.status || 500;
   let message =
