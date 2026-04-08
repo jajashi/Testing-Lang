@@ -1,4 +1,5 @@
-const API_URL= "https://testing-lang-lgsz.onrender.com"
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const auth = {
   async login(username, password) {
     try {
