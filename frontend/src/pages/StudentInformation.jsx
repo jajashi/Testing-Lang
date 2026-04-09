@@ -610,7 +610,7 @@ const StudentInformation = () => {
     setIsDeleting(true);
     setDeleteError('');
     try {
-      const res = await fetch(`/api/students/${deleteTarget._id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/students`${deleteTarget._id}`, { method: 'DELETE' });
       if (res.status === 200 || res.status === 204) {
         setStudents((prev) => prev.filter((s) => s._id !== deleteTarget._id));
         toast.success("Student record successfully deleted!");
