@@ -29,6 +29,7 @@ import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
 import FilterDropdown from "../components/FilterDropdown";
 import SkillsFilter from "../components/SkillsFilter";
 import { useAuth } from '../context/AuthContext';
+import { apiFetch } from "../api";
 import "../styles/StudentInformation.css";
 
 const mockStudents = [
@@ -357,7 +358,7 @@ const StudentInformation = () => {
 
       console.log("[fetchStudents] Fetching:", url);
 
-      const res = await fetch(url);
+      const res = await apiFetch(url);
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       const data = await res.json();
       setStudents(Array.isArray(data) ? data : []);
@@ -610,7 +611,7 @@ const StudentInformation = () => {
     setIsDeleting(true);
     setDeleteError('');
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/students/${deleteTarget._id}`, { method: 'DELETE' });
+      const res = await apiFetch(`/api/students/${deleteTarget._id}`, { method: 'DELETE' });
       if (res.status === 200 || res.status === 204) {
         setStudents((prev) => prev.filter((s) => s._id !== deleteTarget._id));
         toast.success("Student record successfully deleted!");
