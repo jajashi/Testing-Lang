@@ -716,26 +716,6 @@ const StudentInformation = () => {
           </div>
         </div>
 
-        {showFilters ? (
-          <div className="filter-toolbar">
-            <div className="filter-group">
-              <FilterDropdown label="Program" value={programFilter} options={PROGRAM_OPTIONS} onChange={setProgramFilter} onClear={() => setProgramFilter('')} placeholder="All Programs" disabled={isFetching} />
-              <FilterDropdown label="Year Level" value={yearLevelFilter} options={YEAR_LEVEL_OPTIONS} onChange={setYearLevelFilter} onClear={() => setYearLevelFilter('')} placeholder="All Years" disabled={isFetching} />
-              <FilterDropdown label="Section" value={sectionFilter} options={SECTION_OPTIONS} onChange={setSectionFilter} onClear={() => setSectionFilter('')} placeholder="All Sections" disabled={isFetching} />
-              <FilterDropdown label="Status" value={statusFilter} options={STATUS_OPTIONS} onChange={setStatusFilter} onClear={() => setStatusFilter('')} placeholder="All Statuses" disabled={isFetching} />
-              <FilterDropdown label="Scholarship" value={scholarshipFilter} options={SCHOLARSHIP_OPTIONS} onChange={setScholarshipFilter} onClear={() => setScholarshipFilter('')} placeholder="All Scholarships" disabled={isFetching} />
-              <FilterDropdown label="Gender" value={genderFilter} options={GENDER_OPTIONS} onChange={setGenderFilter} onClear={() => setGenderFilter('')} placeholder="All Genders" disabled={isFetching} />
-              <FilterDropdown label="Skills" value={skillFilter} options={SKILL_OPTIONS} onChange={setSkillFilter} onClear={() => setSkillFilter('')} placeholder="All Skills" disabled={isFetching} />
-              <FilterDropdown label="Violation" value={violationFilter} options={VIOLATION_OPTIONS} onChange={setViolationFilter} onClear={() => setViolationFilter('')} placeholder="All Violations" disabled={isFetching} />
-            </div>
-            {(query || programFilter || skillFilter || yearLevelFilter || sectionFilter || statusFilter || scholarshipFilter || genderFilter || violationFilter) ? (
-              <button type="button" className="clear-filters-btn" onClick={handleClearFilters} disabled={isFetching}>
-                <FiRotateCcw />
-                Clear Filters
-              </button>
-            ) : null}
-          </div>
-        ) : null}
         {/* ===== Filter Panel ===== */}
         {showFilters && (
           <>
@@ -762,7 +742,7 @@ const StudentInformation = () => {
                 <FilterDropdown
                   label="Section"
                   value={sectionFilter}
-                  options={[]}
+                  options={SECTION_OPTIONS}
                   onChange={setSectionFilter}
                   onClear={() => setSectionFilter("")}
                   placeholder="All sections"
