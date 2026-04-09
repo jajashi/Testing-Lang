@@ -24,7 +24,7 @@ app.use(express.json({ limit: '8mb' }));
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/students', studentRoutes);
+app.use("/api/students", studentRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/specializations', specializationRoutes);
 
